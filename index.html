@@ -1,125 +1,88 @@
-<!doctype html>
-<html lang="zh" class="no-js">
+<!DOCTYPE html>
+<html lang="zh-CN">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jvaaaa</title>
-  <meta name="Description" content="Home Page of iissnan">
-  <meta name="color-scheme" content="dark light">
-  <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="vi">
-    <h1 class="animate-slide-in-down">Jvaaaa</h1>
-    <div class="quote">
-      <span class="quote-line quote-line-start animate-slide-in-left"></span>
-      <span class="quote-icon quote-icon-start animate-slide-in-down">
-        <i class="icon icon-quotes-left"></i>
-      </span>
-      <p class="quote-content animate-slide-in-down">不积跬步，无以至千里。不积小流，无以成江海。</p>
-      <p class="quote-author animate-slide-in-down">《劝学篇》—— <em>荀子</em></p>
-      <span class="quote-icon quote-icon-end animate-slide-in-up">
-        <i class="icon icon-quotes-right"></i>
-      </span>
-      <span class="quote-line quote-line-end animate-slide-in-right"></span>
-    </div>
-    <div class="links">
-      <a href="https://pan.jvaaaa.com" class="animate-slide-in-down">云盘</a>
-      <a href="https://cloud.jvaaaa.com" class="animate-slide-in-down">Cloud</a>
-      <a href="https://blog.jvaaaa.com" class="animate-slide-in-down">Blog</a>
-    </div>
-    <div class="location">
-      <span class="location-icon animate-slide-in-up">
-        <i class="icon icon-map-pin"></i>
-      </span>
-      <span class="location-text animate-slide-in-down">ZhangYe - China</span>
-    </div>
-    <div class="relocating">
-      Navigating to: <span class="relocate-location"></span>...
-    </div>
-  </div>
+  <nav>
+    <a href="#home" class="active">首页</a>
+    <a href="#about">关于</a>
+    <a href="#timeline">历程</a>
+    <a href="#website">站点</a>
+  </nav>
 
-  <script src="assets/vendors/jquery-3.3.1.min.js"></script>
-  <script>
-    $(function () {
-      var SLIDE_IN_DOWN = { opacity: 1, top: 0 };
-      var SLIDE_IN_UP = { opacity: 1, bottom: 0 };
-      var SLIDE_IN_LEFT = { left: 0 };
-      var SLIDE_IN_RIGHT = { right: 0 };
-
-      registerCheatCode();
-      executeAnimations();
-
-      function executeAnimations() {
-        $.when()
-          .then(animateTitle)
-          .then(animateQuote)
-          .then(animateLinks)
-          .then(animateLocation);
-      }
-
-      function animateTitle() {
-        return animate('h1', SLIDE_IN_DOWN);
-      }
-
-      function animateQuote() {
-        return $.when(
-          animate('.quote-line-start', SLIDE_IN_LEFT),
-          animate('.quote-line-end',SLIDE_IN_RIGHT),
-          animate('.quote-icon-start', SLIDE_IN_DOWN),
-          animate('.quote-icon-end', SLIDE_IN_UP)
-        )
-          .then(function () {
-            return animate('.quote-content', SLIDE_IN_DOWN);
-          })
-          .then(function () {
-            return animate('.quote-author', SLIDE_IN_DOWN);
-          });
-      }
-
-      function animateLinks() {
-        var DELAY_STEP = 200;
-        var elements = $('.links a');
-        var concurrent = $.makeArray(elements)
-          .map(function (element, index) {
-            return animate(element, SLIDE_IN_DOWN, index * DELAY_STEP);
-          });
-
-        return $.when.apply($, concurrent);
-      }
-
-      function animateLocation() {
-        return $.when(
-          animate('.location-icon', SLIDE_IN_UP),
-          animate('.location-text', SLIDE_IN_DOWN)
-        );
-      }
-
-      function animate(selector, properties, delay, options) {
-        delay = delay || 0;
-        return $(selector).delay(delay)
-          .animate(properties, options)
-          .promise();
-      }
-
-      function registerCheatCode() {
-        $(document.body).on('keydown', function (event) {
-          var KEY_B = 66;
-
-          if (event.which === KEY_B) {
-            $('.relocate-location').text('Bookmark Page');
-            $('.relocating').css('opacity', 1);
-
-            window.setTimeout(function () {
-              window.location.href = '/bookmarks.html';
-            }, 1000);
-          }
-        });
-      }
-    });
-  </script>
+  <main>
+    <section id="home">
+      <img src="image/bg.jpg" alt="背景" width="100%">
+      <img src="https://q1.qlogo.cn/g?b=qq&nk=2063550364&s=640" class="avatar" onclick="alert('戳我干嘛 ￣へ￣')" />
+      <div class="info">
+        <h2>Jvaaaa</h2>
+        <h5>心存敬畏 行有所止</h5>
+      </div>
+      <div class="link">
+        <a href="mailto:uninto@icloud.com" target="_blank">
+          <img src="image/link/mail.svg" alt="icon">
+        </a>
+        <a href="https://b23.tv/iDh4oum" target="_blank">
+          <img src="image/link/bilibili.svg" alt="icon">
+        </a>
+        <a href="https://weibo.com/u/6476668327" target="_blank">
+          <img src="image/link/weibo.svg" alt="icon">
+        </a>
+        <a href="https://github.com/uninto" target="_blank">
+          <img src="image/link/github.svg" alt="icon">
+        </a>
+        <a href="https://t.me/uninto" target="_blank">
+          <img src="image/link/telegram.svg" alt="icon">
+        </a>
+      </div>
+    </section>
+    <section id="about">
+      <div class="item" style="flex-grow: 1;margin-bottom: 15px;">
+        <h3># 关于我</h3>
+        <p style="text-indent: 2em">雄关漫道真如铁，而今迈步从头越</p>
+        <br>
+        <p>- [x] HTML</p>
+        <p>- [x] CSS</p>
+        <p>- [x] JavaScript</p>
+        <p>- [x] ...</p>
+      </div>
+      <div class="item">
+        <h3># 特别感谢</h3>
+        <h5> - 图标来自: <a href="https://github.com/Remix-Design/RemixIcon" target="_blank"
+            style="color: black;text-decoration: underline">REMIX ICON</a></h5>
+        <h5> - 字体来自: <a href="https://github.com/ButTaiwan/gensen-font" target="_blank"
+            style="color: black;text-decoration: underline">源泉圆体</a></h5>
+        <h5> - 天气来自: <a href="https://www.seniverse.com" target="_blank"
+            style="color: black;text-decoration: underline">心知天气</a></h5>
+      </div>
+    </section>
+    <section id="timeline">
+      <div class="item">
+        <ul id="line"></ul>
+      </div>
+    </section>
+    <section id="website">
+      <ul id="site"></ul>
+    </section>
+  </main>
+  <footer>
+  <!--
+    <a href="http://beian.miit.gov.cn/" target="_blank"> 豫ICP备2022025333号 </a>
+    &nbsp;|&nbsp;
+    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41061102000322" target="_blank">
+      豫公网安备41061102000322号 </a>
+   -->
+   <p align="center">♡</p>
+  </footer>
+  <div id="tp-weather-widget"></div>
+  <img src="image/China.svg" alt="China" style="width:70px;position: fixed;right: 10px;bottom: 30px;">
+  <script src="index.js"></script>
 </body>
+
 </html>
